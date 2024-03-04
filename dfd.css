@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --fonts: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr minmax(min-content, max-content) 1fr;
+  margin: auto;
+
+  & h1 {
+    font-size: 3rem;
+    font-family: var(--fonts);
+    grid-column: 2;
+  }
+
+  & ul {
+    display: grid;
+    grid-column: 2;
+    background-color: lightgray;
+    padding: 1rem;
+
+    & li {
+      list-style: none;
+      padding: 1rem;
+    }
+
+    & :nth-child(even) {
+      background-color: aqua;
+    }
+  }
+
+  & a {
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: var(--fonts);
+    color: gray;
+
+    &:hover {
+      color: black;
+      background-color: darkgray;
+    }
+  }
+}
