@@ -11,7 +11,7 @@
 body {
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 1fr minmax(min-content, max-content) 1fr;
+  grid-template-columns: 1fr minmax(max-content, max-content) 1fr;
   margin: auto;
 
   & h1 {
@@ -29,10 +29,11 @@ body {
     & li {
       list-style: none;
       padding: 1rem;
+      background-color: #838383;
     }
-
     & :nth-child(even) {
-      background-color: aqua;
+      background-color: #b1b1b1;
+      
     }
   }
 
@@ -42,11 +43,11 @@ body {
     font-size: 2rem;
     font-weight: 600;
     font-family: var(--fonts);
-    color: gray;
+    color: white;
 
     &:hover {
       color: black;
-      background-color: darkgray;
+      filter: drop-shadow(35deg);
     }
   }
 }
