@@ -1,7 +1,4 @@
 /* Dine styles her */
-:root {
-  /* --flow-space: 50px; */
-}
 article {
   /* 1. Angiv en standard vertikal margin på `.5rlh` mellem alle elementer inde i **`article`**, 
       med mulighed for overskrive denne via en custom property kaldet `--flow-space`. */
@@ -10,14 +7,14 @@ article {
   }
   /* 2. For `h2`, sæt `—flow-space`-værdien til `2rlh`. */
   & h2 {
-    margin: var(--flow-space, 2rlh);
+    --flow-space: 2rlh;
   }
   /* 3. For `h3`, sæt `—flow-space`-værdien til `1rlh`. */
   & h3 {
-    margin: var(--flow-space, 1rlh);
+    --flow-space: 1rlh;
   }
   /* 4. For alle elementer, der kommer lige efter **`h3`**, reducér `—flow-space` til `.25rlh`. */
   & h3 + * {
-    margin: var(--flow-space, 0.25rlh);
+    --flow-space: 0.25rlh;
   }
 }
