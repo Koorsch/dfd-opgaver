@@ -34,9 +34,15 @@ import { cardContent } from "../data/card-content.js";
 </html>
 
 <style>
-  main {
-    padding-block: 4rem; /* Kun af æstetiske årsager */
-  }
+main {
+  padding-block: 4rem;
+}
   section {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, var(--content-width)) 1fr;
+    & > * {
+      grid-column: 2;
+    }
   }
+
 </style>
