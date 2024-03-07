@@ -23,10 +23,10 @@ const { cardContent } = Astro.props;
     scroll-snap-type: x mandatory;
     list-style: none;
     & li {
-      scroll-snap-align: end;
-      scroll-snap-stop: always
+      scroll-snap-align: center;
+      scroll-behavior: smooth;
       flex-shrink: 0;
-      flex: 1 0 40%;
+      flex: 1 0 75%;
       padding: var(--card-padding);
       border-radius: var(--card-border-radius);
       background: var(--card-background);
