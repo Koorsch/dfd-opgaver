@@ -5,63 +5,19 @@
 /* 
                 ########################################
                             SCALE UTOPIA SETUP
-Usage:
---f--1-min/max = less than p (if you ever need
---f-0-min/max = p
---f-1-min/max = h5
-.... etc etc
+
 
 
                 ########################################
 */
 
-
-    --fluid-min-width: 320px;
-    --fluid-max-width: 1240px;
-  
-    --fluid-screen: 100svw;
-    --fluid-bp: calc(
-      (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
-
-    --f--1-min: 12.80px;
-    --f--1-max: 13.50px;
-    --step--1: calc(
-      ((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) *  var(--fluid-bp));
-  
-    --f-0-min: 16.00px;
-    --f-0-max: 18.00px;
-    --step-0: calc(
-      ((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) * var(--fluid-bp));
-  
-    --f-1-min: 20.00px;
-    --f-1-max: 23.99px;
-    --step-1: calc(
-      ((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) * var(--fluid-bp));
-
-    --f-2-min: 25.00px;
-    --f-2-max: 31.98px;
-    --step-2: calc(
-      ((var(--f-2-min) / 16) * 1rem) + (var(--f-2-max) - var(--f-2-min)) *
-        var(--fluid-bp)
-    );
-    --f-3-min: 31.25px;
-    --f-3-max: 42.63px;
-    --step-3: calc(
-      ((var(--f-3-min) / 16) * 1rem) + (var(--f-3-max) - var(--f-3-min)) *
-        var(--fluid-bp)
-    );
-    --f-4-min: 39.06px;
-    --f-4-max: 56.83px;
-    --step-4: calc(
-      ((var(--f-4-min) / 16) * 1rem) + (var(--f-4-max) - var(--f-4-min)) *
-        var(--fluid-bp)
-    ); 
-    --f-5-min: 48.83px;
-    --f-5-max: 75.76px;
-    --step-5: calc(
-      ((var(--f-5-min) / 16) * 1rem) + (var(--f-5-max) - var(--f-5-min)) *
-        var(--fluid-bp)
-    );
+    --step--1: clamp(0.8rem, 0.7847rem + 0.0765vi, 0.844rem);
+    --step-0: clamp(1rem, 0.9565rem + 0.2174vi, 1.125rem);
+    --step-1: clamp(1.25rem, 1.1632rem + 0.4341vi, 1.4996rem);
+    --step-2: clamp(1.5625rem, 1.4107rem + 0.7591vi, 1.999rem);
+    --step-3: clamp(1.9531rem, 1.7056rem + 1.2375vi, 2.6647rem);
+    --step-4: clamp(2.4414rem, 2.0551rem + 1.9315vi, 3.552rem);
+    --step-5: clamp(3.0518rem, 2.4663rem + 2.9271vi, 4.7348rem);
 
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
@@ -75,61 +31,61 @@ Usage:
     --gray-900: #111827;
   }
   
-  @media screen and (min-width: 1240px) {
-    :root {
-      --fluid-screen: calc(var(--fluid-max-width) * 1px);
-    }
-  }
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
 body {
     font-family: system-ui, sans-serif;
     display: grid;
-    grid:auto / [left] 1fr [breakout-start] 1fr [content] minmax(var(--fluid-min-width), var(--fluid-max-width)) [breakout-end] 1fr [right] 1fr;
+    font-size: var(--step-0);
+    /* grid:auto / [left] 1fr [breakout-start] 1fr [content] minmax(0, 1200px) [breakout-end] 1fr [right] 1fr; */
+    color: var(--gray-600);
+    line-height: 1.7;
     
 }
 article {
     display: grid;
     place-content: center;
     grid-column: content;
-    & > * + * {
-        line-height: var(--fluid-bp);
+    & > * {
+      max-width: 70ch;
     }
+
 }
-figure {
+
+:is(h1, h2, h3, blockquote) {
+  --flow-space: 1.5em;
+  color: var(--gray-800);
+  line-height: 1.1;
+}
+
+:is(h1, h2, h3) + * {
+  --flow-space: 0.5em;
+}
+:is(h1, h2, h3) + p {
+  --flow-space: 1.5em;
 }
 h1 { 
-    font-size: min(var(--f-5-min), var(--f-5-max));
-    line-height: var(--step-5);
-    color: var(--gray-900);
+    font-size: var(--step-5);
+    max-width: 20ch;
 }
 h2 { 
-    font-size: min(var(--f-4-min), var(--f-4-max));
-    margin: var(--step-4);
-    color: var(--gray-800);
+    font-size: var(--step-4);
+    max-width: 28ch;
 }
 h3 { 
-    font-size: min(var(--f-3-min), var(--f-3-max));
-    margin: var(--step-3);
-    color: var(--gray-800);
+  font-size: var(--step-3);
+  max-width: 28ch;
 }
 h4 { 
-    font-size: min(var(--f-2-min), var(--f-2-max));
-    margin: var(--step-2);
+  font-size: var(--step-2);
 }
 h5 { 
-    font-size: min(var(--f-1-min), var(--f-1-max));
-    margin: var(--step-1);
+  font-size: var(--step-1);
 }
-p {
-    font-size: min(var(--f-0-min), var(--f-0-max));
-    margin: var(--step-0);
-    color: var(--gray-700);
-    line-height: var(--step-0);
-
-    & .text-small {
-        font-size: min(var(--f--1-min), var(--f--1-max));
-        margin: var(--step-0);
-        color: var(--gray-700);
-    }
+.text-small {
+        font-size: var(--step--1);
 }
 
 /* 
@@ -138,11 +94,16 @@ p {
                 #######
 */
 
-:is(h2 + h3) {
-    margin-block: -0.7rem;
-    text-indent: 0.5rem;
+code {
+  font-style: italic;
 }
-:is(* + p) {
-    background: green;
-    line-height: calc(var(--f-0-min) - var(--fluid-bp));
+a {
+  text-decoration: none;
+  :any-link, :active, :visited, :link {
+    color: --var(--gray-900);
+  }
+}
+a:hover {
+  color: var(--gray-500);
+  text-decoration: underline;
 }
