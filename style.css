@@ -136,6 +136,5 @@ p {
   text-indent: 0.5rem;
 }
 :is(* + p) {
-  background: green;
   line-height: calc(var(--f-0-min) - var(--fluid-bp));
 }
